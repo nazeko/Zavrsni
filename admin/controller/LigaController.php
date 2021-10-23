@@ -1,9 +1,9 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"]."/config/config.php");
 // kontroler koristi model
-require_once(__DIR__."/../model/DrzavaModel.php");
+require_once(__DIR__."/../model/LigaModel.php");
 
-class DrzavaController
+class LigaController
 {
     /**
      * Metoda koja služi za prikaz forme za dodavanje države i dodavanje države 
@@ -13,7 +13,7 @@ class DrzavaController
     public function create()
     {
         // meta title (tab od browsera)   
-        $title = "Dodaj državu";
+        $title = "Dodaj ligu";
         //varijabla za postavljanje aktivne klase u navigaciji
         $nav = "kreiraj";
 
@@ -25,13 +25,13 @@ class DrzavaController
             if(!empty($_POST["naziv"]) and !empty($_POST["logo"]))
             {
                 // inicijalizaciju klase
-                $drzavaModel = new DrzavaModel;
+                $ligaModel = new LigaModel;
                 
-                // u ovoj klasi nadi mi funkciju drzava
-                $rezultat = $drzavaModel->dodajDrzavu($_POST["naziv"],$_POST["logo"]);
+                // u ovoj klasi nadi mi funkciju liga
+                $rezultat = $ligaModel->dodajLigu($_POST["naziv"],$_POST["logo"]);
                 if($rezultat)
                 {
-                    header("Location: /admin/pregled_drzava.php");
+                    header("Location: /admin/pregled_liga.php");
                 }
             }
             else
@@ -41,23 +41,23 @@ class DrzavaController
             }
         }
         ob_start();
-        require_once( 'view/drzava/createView.php' );
+        require_once( 'view/liga/createView.php' );
         $output = ob_get_clean();
         return $output;
     }
     public function read()
     {
         // meta title (tab od browsera)   
-        $title = "Pregledaj države";
+        $title = "Pregledaj lige";
         //varijabla za postavljanje aktivne klase u navigaciji
         $nav = "pregled";
 
-        $drzavaModel = new DrzavaModel;
+        $ligaModel = new LigaModel;
         // spema se rezultat metode u varijablu rezultat
-        $rezultat = $drzavaModel->dohvatiSveDrzave();
+        $rezultat = $ligaModel->dohvatiSveLige();
 
         ob_start();
-        require_once( 'view/drzava/listaView.php' );
+        require_once( 'view/liga/listaView.php' );
         $output = ob_get_clean();
         return $output;
     }
@@ -65,7 +65,7 @@ class DrzavaController
     public function update()
     {
         // meta title (tab od browsera)   
-        $title = "Uredi državu";
+        $title = "Uredi ligu";
         //varijabla za postavljanje aktivne klase u navigaciji
         $nav = "kreiraj";
 
@@ -73,8 +73,8 @@ class DrzavaController
         // dohvati podatke od države iz baze pomoću id-a iz $_GET paramtra 
         // tako da se u formi mogu prikazati trenutni podaci
         
-        $drzavaModel = new DrzavaModel;
-        $rezultat=$drzavaModel->dohvatiDrzavuPomocuId($_GET["id"]);
+        $ligaModel = new LigaModel;
+        $rezultat=$ligaModel->dohvatiLiguPomocuId($_GET["id"]);
 
         //provjeravamo da li je korisnik kliknio submit
         if(!empty($_POST))
@@ -83,13 +83,13 @@ class DrzavaController
             if(!empty($_POST["naziv"]) and !empty($_POST["logo"]))
             {
                 // inicijalizaciju klase
-                $drzavaModel = new DrzavaModel;
+                $ligaModel = new LigaModel;
                 
-                // u ovoj klasi nadi mi funkciju drzava
-                $rezultat = $drzavaModel->urediDrzavu($_GET["id"],$_POST["naziv"],$_POST["logo"]);
+                // u ovoj klasi nadi mi funkciju liga
+                $rezultat = $ligaModel->urediLigu($_GET["id"],$_POST["naziv"],$_POST["logo"]);
                 if($rezultat)
                 {
-                    header("Location: /admin/pregled_drzava.php");
+                    header("Location: /admin/pregled_liga.php");
                 }
             }
             else
@@ -99,19 +99,19 @@ class DrzavaController
             }
         }
         ob_start();
-        require_once( 'view/drzava/updateView.php' );
+        require_once( 'view/liga/updateView.php' );
         $output = ob_get_clean();
         return $output;
     }
 
     public function delete()
     {
-        $drzavaModel = new DrzavaModel;
-        $rezultat=$drzavaModel->izbrisiDrzavu($_GET["id"]);
+        $ligaModel = new LigaModel;
+        $rezultat=$ligaModel->izbrisiLigu($_GET["id"]);
 
         if($rezultat)
         {
-            header("Location: /admin/pregled_drzava.php");
+            header("Location: /admin/pregled_liga.php");
         }
     }
 }

@@ -33,6 +33,24 @@
 						<li><a class="dropdown-item" href="/admin/nova_utakmica.php">Nova utakmica</a></li>
 					</ul>
 				</li> 
+                <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle  <?php 
+                        if($nav == "pregled")
+                        {
+                            echo "active";
+                        }
+                    
+                    ?>" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Pregled
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+						<li><a class="dropdown-item" href="/admin/pregled_drzava.php">Pregled država</a></li>
+						<li><a class="dropdown-item" href="/admin/pregled_liga.php">Pregled liga</a></li>
+						<li><a class="dropdown-item" href="/admin/pregled_klub.php">Pregled klub</a></li>
+						<li><a class="dropdown-item" href="/admin/pregled_igrac.php">Pregled igrač</a></li>
+						<li><a class="dropdown-item" href="/admin/pregeled_utakmica.php">Pregled utakmica</a></li>
+					</ul>
+				</li> 
 				<li class="nav-item">
 					<a class="nav-link" href="#">Link</a>
 				</li>

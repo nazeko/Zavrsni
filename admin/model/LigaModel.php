@@ -1,15 +1,15 @@
 <?php
 
 require_once("Database.php");
-class DrzavaModel extends Database
+class LigaModel extends Database
 {
     
-    public function dodajDrzavu(string $naziv,string $logo)
+    public function dodajLigu(string $naziv,string $logo)
     {
         $response = false;
         $veza = $this->spajanje_na_bazu();
 
-        $upit = "INSERT INTO drzave ( naziv, logo )
+        $upit = "INSERT INTO lige ( naziv, logo )
         VALUES ( '$naziv','$logo' )";
 
         $drzava = $this->izvrsi_upit($veza,$upit, true);
@@ -23,12 +23,12 @@ class DrzavaModel extends Database
         return $response;
     }
 
-    public function dohvatiSveDrzave()
+    public function dohvatiSveLige()
     {
         $response = array();
         $veza = $this->spajanje_na_bazu();
 
-        $upit = "SELECT * FROM drzave ";
+        $upit = "SELECT * FROM lige ";
         $drzava = $this->izvrsi_upit($veza,$upit);
 
         $this->zatvori_vezu_na_bazu($veza);
@@ -39,12 +39,12 @@ class DrzavaModel extends Database
         }
         return $response;
     }
-    public function dohvatiDrzavuPomocuId($id)
+    public function dohvatiLiguPomocuId($id)
     {
         $response = array();
         $veza = $this->spajanje_na_bazu();
 
-        $upit = "SELECT * FROM drzave WHERE id=$id ";
+        $upit = "SELECT * FROM lige WHERE id=$id ";
 
         $drzava = $this->izvrsi_upit($veza,$upit);
 
@@ -56,12 +56,12 @@ class DrzavaModel extends Database
         }
         return $response;
     }
-    public function urediDrzavu(int $id,string $naziv,string $logo)
+    public function urediLigu(int $id,string $naziv,string $logo)
     {
         $response = false;
         $veza = $this->spajanje_na_bazu();
 
-        $upit = "UPDATE drzave SET naziv='$naziv', logo='$logo' WHERE id=$id";
+        $upit = "UPDATE lige SET naziv='$naziv', logo='$logo' WHERE id=$id";
 
         $drzava = $this->izvrsi_upit($veza,$upit, true);
 
@@ -73,12 +73,12 @@ class DrzavaModel extends Database
         }
         return $response;
     }
-    public function izbrisiDrzavu(int $id)
+    public function izbrisiLigu(int $id)
     {
         $response = false;
         $veza = $this->spajanje_na_bazu();
 
-        $upit = "DELETE FROM drzave WHERE id=$id";
+        $upit = "DELETE FROM lige WHERE id=$id";
 
         $drzava = $this->izvrsi_upit($veza,$upit, true);
 
