@@ -48,7 +48,7 @@
 						<li><a class="dropdown-item" href="/admin/pregled_liga.php">Pregled liga</a></li>
 						<li><a class="dropdown-item" href="/admin/pregled_klub.php">Pregled klub</a></li>
 						<li><a class="dropdown-item" href="/admin/pregled_igrac.php">Pregled igrač</a></li>
-						<li><a class="dropdown-item" href="/admin/pregeled_utakmica.php">Pregled utakmica</a></li>
+						<li><a class="dropdown-item" href="/admin/pregled_utakmica.php">Pregled utakmica</a></li>
 					</ul>
 				</li> 
 				<li class="nav-item">

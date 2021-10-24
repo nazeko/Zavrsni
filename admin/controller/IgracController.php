@@ -19,16 +19,16 @@ class IgracController
         //varijabla za postavljanje aktivne klase u navigaciji
         $nav = "kreiraj";
 
-        //provjeravamo da li je korisnik kliknio submit
         $greskaPoruka="";
-
+        
         $KlubModel = new KlubModel;
-
+        
         $klubovi = $KlubModel->dohvatiSveKlubove();
         
         // print_r($klubovi);
-
-
+        
+        
+        //provjeravamo da li je korisnik kliknio submit
         if(!empty($_POST))
         {
             // provjeravamo da li je korisnik unio sva potrebna polja
